@@ -1,0 +1,7 @@
+server:
+  port: 8082
+app:
+  period: 5
+  strategy:
+    gold: 0.8
+    silver: 0.7
