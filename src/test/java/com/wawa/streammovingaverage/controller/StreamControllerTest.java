@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -31,12 +32,15 @@ public class StreamControllerTest {
 
     private Event event;
 
+    @Value("${server.port}")
+    private String port;
+
 
     @Test
     public void whenRequestSuccess_thenReturnOkResponse() throws URISyntaxException {
 
         TestRestTemplate testRestTemplate = new TestRestTemplate();
-        final String baseUrl = "http://localhost:"+8082+"/events";
+        final String baseUrl = "http://localhost:"+port+"/events";
         URI uri = new URI(baseUrl);
 
         HttpHeaders headers = new HttpHeaders();
@@ -59,7 +63,7 @@ public class StreamControllerTest {
     public void whenRequestFails_thenReturnBadRequestResponse() throws URISyntaxException {
 
         TestRestTemplate testRestTemplate = new TestRestTemplate();
-        final String baseUrl = "http://localhost:"+8082+"/events";
+        final String baseUrl = "http://localhost:"+port+"/events";
         URI uri = new URI(baseUrl);
 
         HttpHeaders headers = new HttpHeaders();

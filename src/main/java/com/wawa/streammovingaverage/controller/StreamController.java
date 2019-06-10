@@ -25,6 +25,7 @@ Description: Controller to handle the Rest requests
 
 @RestController
 @Api(value ="Calculating moving average of streams ", description = "Operations pertaining to system ")
+@RequestMapping("/stream")
 public class StreamController {
     //Logger
     private static final Logger LOG = LoggerFactory.getLogger(StreamController.class);

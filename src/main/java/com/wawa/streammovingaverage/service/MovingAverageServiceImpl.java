@@ -1,6 +1,7 @@
 package com.wawa.streammovingaverage.service;
 
 import com.wawa.streammovingaverage.config.AppProperties;
+import com.wawa.streammovingaverage.exceptions.StrategyNotFoundException;
 import com.wawa.streammovingaverage.utilities.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,8 @@ public class MovingAverageServiceImpl implements IMovingAverageService {
 
     private Double getRate(String strategy)
     {
+        if(properties.getStrategy().get(strategy) == null)
+            throw  new StrategyNotFoundException("Rate not found for the strtagy :" +strategy);
         return properties.getStrategy().get(strategy);
     }
 
