@@ -54,7 +54,7 @@ public class MovingAverageServiceImpl implements IMovingAverageService {
     private Double getRate(String strategy)
     {
         if(properties.getStrategy().get(strategy) == null)
-            throw  new StrategyNotFoundException("Rate not found for the strtagy :" +strategy);
+            throw  new StrategyNotFoundException("Rate not found for the strategy :" +strategy);
         return properties.getStrategy().get(strategy);
     }
 
